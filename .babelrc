@@ -1,4 +1,13 @@
 {
-  "presets": ["es2015", "stage-1"],
-  "plugins": ["babel-plugin-add-module-exports", "external-helpers"]
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ]
+  ],
+  "plugins": [
+    "external-helpers"
+  ]
 }

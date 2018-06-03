@@ -1,4 +1,3 @@
-webpack.conf.js
-/src
-.babelrc
-.eslintrc
+src
+demo
+test
