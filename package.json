@@ -28,7 +28,7 @@
     "build:dev": "rollup -c rollup.config.js --environment BUILD:development",
     "build:prod": "rollup -c rollup.config.js --environment BUILD:production",
     "release": "npm run build && npm run test",
-    "test": "cypress run --browser chrome",
+    "test": "cypress run",
     "test:watch": "cypress open"
   },
   "devDependencies": {

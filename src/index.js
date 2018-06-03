@@ -1,8 +1,3 @@
-export default class Navigo {
-  constructor() {
-      
-  }
-  destroy() {
-    
-  }
-}
+import Router from './Router';
+
+export { Router }
