@@ -43,7 +43,20 @@ function regExpResultToParams(match, names) {
     .slice(1, match.length)
     .reduce((params, value, index) => {
       if (params === null) params = {};
-      params[names[index]] = decodeURIComponent(value);
+      /*
+        調整下面這行的目的：為了解決我的網站前端和後端的衝突。
+
+        wordpress 在儲存發表物 slug 時，會先以 url 編碼。
+        之後當它要透過頁面或 rest api 輸出 slug 時，仍是直接輸出編碼後的 slug。
+
+        然而，當 navigo 透過 regExpResultToParams 解析路徑以提供參數給對應的處理函式時，卻會解析這些路徑。
+        這使我用來記錄 slug 是發文或專頁的功能 ── registryOfPostAndPage ── 在路徑有編碼過的中文時，
+        無法根據路徑參數找到對應的文章型態。
+
+        在考慮數種辦法以解決這個衝突之後，我決定從這邊下手，拿掉下面這行的 decodeURIComponent 作業。
+        採用這種作法的原因是前後端要改的程式碼都比較少，而且不需要了解相對複雜的 wordpress 後端設計。
+      */
+      params[names[index]] = value;
       return params;
     }, null);
 }
